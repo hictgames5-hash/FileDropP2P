@@ -87,7 +87,7 @@
   </div>
 
   <script>
-    const IMP_URL = "https://seu-link-do-imp.onrender.com";
+    const IMP_URL = "https://hictgames5-hash.github.io/IMP/";
 
     let peer = null;
     let myId = "";
@@ -147,7 +147,7 @@
     function sendFiles() {
       const destId = document.getElementById('dest-id').value.trim().toUpperCase();
       const files = document.getElementById('file-input').files;
-      const sender = document.getElementById('sender-name').value.trim() || 'Anónimo';
+      const sender = document.getElementById('sender-name').value.trim() || 'Anônimo';
       const note = document.getElementById('file-note').value.trim();
 
       if (!destId || destId.length !== 5) {
@@ -156,7 +156,7 @@
       }
 
       if (!files || files.length === 0) {
-        showToast("Selecione pelo menos um ficheiro!");
+        showToast("Selecione pelo menos um arquivo!");
         return;
       }
 
@@ -164,14 +164,14 @@
       const progressFill = document.getElementById('progress-fill');
       const progressText = document.getElementById('progress-text');
       progressBox.style.display = 'block';
-      progressText.innerText = "A conectar ao destino...";
+      progressText.innerText = "Conectando ao destino...";
 
       // Inicia a conexão WebRTC
       const conn = peer.connect(destId, { reliable: true });
 
       // AGUARDA a conexão estar 100% aberta antes de ler e enviar os ficheiros
       conn.on('open', function() {
-        progressText.innerText = "A preparar envio...";
+        progressText.innerText = "Preparando envio...";
         let filesProcessed = 0;
         const totalFiles = files.length;
         const payload = [];
@@ -196,7 +196,7 @@
             if (filesProcessed === totalFiles) {
               // Envia os dados após a confirmação da conexão aberta
               conn.send(payload);
-              showToast("Sucesso: Ficheiro(s) enviado(s) para " + destId + "!");
+              showToast("Sucesso: Arquivo(s) enviado(s) para " + destId + "!");
               setTimeout(function() {
                 progressBox.style.display = 'none';
                 progressFill.style.width = '0%';
@@ -244,7 +244,7 @@
 
         let impBtn = '';
         if (isDesktop && (t.startsWith('audio/') || t.startsWith('video/'))) {
-          impBtn = `<a href="${IMP_URL}" target="_blank" class="btn-imp">Abrir no IMP</a>`;
+          impBtn = `<a href="${IMP_URL}" target="_blank" class="btn-imp">Visitar IMP</a>`;
         }
 
         card.innerHTML = `
@@ -259,7 +259,7 @@
         inboxList.appendChild(card);
       });
 
-      showToast("Recebeste novos ficheiros!");
+      showToast("Você recebeu novos arquivos.");
     }
 
     document.getElementById('send-btn').addEventListener('click', sendFiles);
