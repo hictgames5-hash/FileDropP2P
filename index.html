@@ -191,7 +191,7 @@
             filesProcessed++;
             let pct = Math.round((filesProcessed / totalFiles) * 100);
             progressFill.style.width = pct + '%';
-            progressText.innerText = 'A enviar: ' + pct + '%';
+            progressText.innerText = 'Enviando: ' + pct + '%';
 
             if (filesProcessed === totalFiles) {
               // Envia os dados após a confirmação da conexão aberta
